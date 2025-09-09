@@ -1,2 +1,2 @@
-export type { ZodError } from './types.ts';
-export { formatError, createZodError } from './formatter.ts';
+export type { ZodError } from './types.js';
+export { formatError, createZodError } from './formatter.js';

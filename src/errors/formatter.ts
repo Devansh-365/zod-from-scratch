@@ -1,4 +1,4 @@
-import type { ValidationError } from '@/core';
+import type { ValidationError } from '../core';
 
 export const formatError = (error: ValidationError): string => {
   const pathString = error.path.length > 0 ? ` at ${error.path.join('.')}` : '';
