@@ -1,4 +1,4 @@
-import { success, failure, type Validator, type Schema, createSchema } from '../core';
+import { success, failure, type Validator, type Schema, createSchema } from '@/core';
 
 export const createStringValidator = (
   minLength?: number,
