@@ -1,10 +1,7 @@
-export type { ValidationResult, ValidationError } from './core';
-export type { Infer } from './types';
-export { StringSchema } from './builders/index.ts';
-import { string } from './builders/factory.ts';
+export type { Schema, ValidationResult, ValidationError, Infer } from './core';
+import { createStringSchema } from './schemas';
 
 export const z = {
-  string,
+  string: createStringSchema,
 } as const;
 
-export default z;
