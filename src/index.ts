@@ -1,7 +1,8 @@
 export type { Schema, ValidationResult, ValidationError, Infer } from './core';
-import { createStringSchema } from './schemas';
+import { createBooleanSchema, createNumberSchema, createStringSchema } from './schemas';
 
 export const z = {
   string: createStringSchema,
+  number: createNumberSchema,
+  boolean: createBooleanSchema,
 } as const;
-

@@ -25,17 +25,26 @@ export const createStringValidator = (
   return success(value);
 };
 
-export const createStringSchema = (): Schema<string> & {
-  min: (n: number) => Schema<string>;
-  max: (n: number) => Schema<string>;
-  email: () => Schema<string>;
-} => {
-  const baseSchema = createSchema(createStringValidator());
+export const createStringSchema = () => {
+  let minLength: number | undefined;
+  let maxLength: number | undefined;
+  let isEmail = false;
 
-  return {
-    ...baseSchema,
-    min: (n: number) => createSchema(createStringValidator(n)),
-    max: (n: number) => createSchema(createStringValidator(undefined, n)),
-    email: () => createSchema(createStringValidator(undefined, undefined, true))
+  const schema = {
+    min: (n: number) => {
+      minLength = n;
+      return schema;
+    },
+    max: (n: number) => {
+      maxLength = n;
+      return schema;
+    },
+    email: () => {
+      isEmail = true;
+      return schema;
+    },
+    ...createSchema(createStringValidator(minLength, maxLength, isEmail)),
   };
+
+  return schema;
 };
